@@ -1,0 +1,70 @@
+<!-- Coded by Engr. Mc Rey Quiao -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotating 3D Earth</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+  canvas {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    // Set up scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Create a sphere geometry for Earth
+    const geometry = new THREE.SphereGeometry(18, 32, 32); // Adjusted size to fit cellphone screen
+
+    // Load Earth texture map
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg');
+
+    // Create a material with the texture
+    const material = new THREE.MeshBasicMaterial({ map: texture });
+
+    // Create a mesh with the geometry and material
+    const earth = new THREE.Mesh(geometry, material);
+
+    // Add the mesh to the scene
+    scene.add(earth);
+
+    // Add ambient light to the scene
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    // Add directional light to the scene
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 1, 0);
+    scene.add(directionalLight);
+
+    // Position the camera
+    camera.position.z = 50;
+
+    // Function to animate the scene
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Rotate the Earth automatically
+      earth.rotation.y += 0.001; // Adjust the rotation speed as needed
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

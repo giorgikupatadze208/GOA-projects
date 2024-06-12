@@ -1,0 +1,436 @@
+""<!--Created by Aiman Zehra-->
+<!--Color gradient suggested by Muhammad Zohaib-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>giorgi kupatadze X da 0 ki</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #990428, #004e92);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        #game {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            color: #fff; /* Make the text color same as the background to hide it initially */
+        }
+        .cell.revealed {
+            color: #000; /* Change the text color to black when revealed */
+        }
+        .cell:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        #message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #reset {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #reset:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+    <div id="message"></div>
+    <button id="reset" class="hidden">Play Again</button>
+
+    <script>
+        const game = document.getElementById('game');
+        const cells = document.querySelectorAll('.cell');
+        const message = document.getElementById('message');
+        const resetButton = document.getElementById('reset');
+        let board = ['', '', '', '', '', '', '', '', ''];
+        const human = 'O';
+        const ai = 'X';
+        let currentPlayer = human;
+
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleCellClick);
+        });
+
+        resetButton.addEventListener('click', resetGame);
+
+        function handleCellClick(e) {
+            const index = e.target.getAttribute('data-index');
+            if (board[index] === '') {
+                makeMove(index, human);
+                if (!checkWin(board, human) && !checkTie()) {
+                    setTimeout(bestMove, 500);
+                }
+            }
+        }
+
+        function makeMove(index, player) {
+            board[index] = player;
+            cells[index].textContent = player;
+            cells[index].classList.add('revealed'); // Make the text visible
+            cells[index].style.cursor = 'default';
+            cells[index].removeEventListener('click', handleCellClick);
+            if (checkWin(board, player)) {
+                message.textContent = `${player} wins!`;
+                endGame();
+            } else if (checkTie()) {
+                message.textContent = 'It\'s a tie!';
+                endGame();
+            }
+        }
+
+        function checkWin(board, player) {
+            const winPatterns = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+            return winPatterns.some(pattern => {
+                return pattern.every(index => {
+                    return board[index] === player;
+                });
+            });
+        }
+
+        function checkTie() {
+            return board.every(cell => cell !== '');
+        }
+
+        function endGame() {
+            cells.forEach(cell => {
+                cell.removeEventListener('click', handleCellClick);
+            });
+            resetButton.classList.remove('hidden');
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            cells.forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('revealed'); // Hide the text again
+                cell.style.cursor = 'pointer';
+                cell.addEventListener('click', handleCellClick);
+            });
+            message.textContent = '';
+            resetButton.classList.add('hidden');
+            currentPlayer = human;
+        }
+
+        function bestMove() {
+            const bestSpot = minimax(board, ai).index;
+            makeMove(bestSpot, ai);
+        }
+
+        function minimax(newBoard, player) {
+            const availSpots = newBoard.reduce((acc, cell, index) => {
+                if (cell === '') acc.push(index);
+                return acc;
+            }, []);
+
+            if (checkWin(newBoard, human)) {
+                return { score: -10 };
+            } else if (checkWin(newBoard, ai)) {
+                return { score: 10 };
+            } else if (availSpots.length === 0) {
+                return { score: 0 };
+            }
+
+            const moves = [];
+            availSpots.forEach(spot => {
+                const move = {};
+                move.index = spot;
+                newBoard[spot] = player;
+
+                if (player === ai) {
+                    const result = minimax(newBoard, human);
+                    move.score = result.score;
+                } else {
+                    const result = minimax(newBoard, ai);
+                    move.score = result.score;
+                }
+
+                newBoard[spot] = '';
+                moves.push(move);
+            });
+
+            let bestMove;
+            if (player === ai) {
+                let bestScore = -Infinity;
+                moves.forEach((move, index) => {
+                    if (move.score > bestScore) {
+                        bestScore = move.score;
+                        bestMove = index;
+                    }
+                });
+            } else {
+                let bestScore = Infinity;
+                moves.forEach((move, index) => {
+                    if (move.score < bestScore) {
+                        bestScore = move.score;
+                        bestMove = index;
+                    }
+                });
+            }
+
+            return moves[bestMove];
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
