@@ -1,0 +1,213 @@
+body{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(57,119,19,1) 60%);
+    background-attachment: fixed;
+    height: 180vh;
+}
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* navbar */
+
+
+.navbar{
+    width: 100%;
+    display: inline;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    padding: 15px 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.1); 
+    z-index: 1;
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+li a{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+p{
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/*     home */
+
+
+#homediv{
+    height: 45vh;
+}
+#homeimg{
+    position: absolute;
+    left: 100vh;
+    top: 7vh;
+    border-radius: 16px;
+    width: 60%;
+}
+#homep{
+    position: absolute;
+    border-radius: 20px;
+    height: 100vh;
+}
+
+
+/*   about us */
+
+
+#aboutusdiv{
+    height: 55vh;
+}
+#aboutusimg{
+    position: absolute;
+    left: 100vh;
+    top: 53vh;
+    border-radius: 16px;
+    width: 60%;
+}
+#aboutusp{
+    position: absolute;
+    float: left;
+    border-radius: 16px;
+}
+
+
+/* GOA land and Hackathon */
+
+
+#GOAlanddiv{
+    height: 20vh;
+}
+#Hackathondiv{
+    height: 45vh
+}
+#goalandimg{
+    position: absolute;
+    left: 100vh;
+    top: 103vh;
+    border-radius: 16px;
+    width: 60%;
+}
+
+
+/*   main */
+
+
+main{
+    position: absolute;
+    left: 10%;
+    top: 30vh;
+}
+
+
+/* footer */
+
+footer{
+    background-color: #111;
+    position: absolute;
+    top: 180vh;
+    width: 100%;
+}
+#footerContainer{
+    width: 100%;
+    padding: 70px 30px 20px ;
+}
+
+#socialIcons{
+    display: flex;
+    justify-content: center;
+}
+#socialIcons a{
+    text-decoration: none;
+    padding:  10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+#socialIcons a i{
+    font-size: 2em;
+    color: rgb(2, 46, 8);
+    opacity: 0,9;
+}
+
+#socialIcons a:hover{
+    background-color: #0c3807;
+    transition: 0.5s;
+}
+#socialIcons a:hover i{
+    color: rgb(6, 49, 24);
+    transition: 0.5s;
+}
+#footerNav{
+    margin: 30px 0;
+}
+#footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+#footerNav ul li a{
+    color:rgb(255, 255, 255);
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+
+}
+#footerNav ul li a:hover{
+    opacity: 1;
+}
+#footerBottom{
+    background-color: #045c0b;
+    padding: 20px;
+    text-align: center;
+}
+#footerBottom p{
+    color: white;
+}
+#designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    } 
+    .footerNav ul li{
+        width:100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a{
+        padding: 8px;
+        margin: 4px;
+    }
+}
+
+
+
+
+
