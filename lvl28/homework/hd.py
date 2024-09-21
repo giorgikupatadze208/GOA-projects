@@ -1,0 +1,1 @@
+#ver amovxseni amocana
