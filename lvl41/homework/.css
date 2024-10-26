@@ -1,0 +1,27 @@
+/* სტილის ფაილი: styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: #4caf50;
+    /* ანიმაციის გამოყენება */
+    animation: moveBox 3s infinite alternate;
+  }
+  
+  /* keyframes ანიმაცია */
+  @keyframes moveBox {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(300px);
+    }
+  }

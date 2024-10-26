@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="k5VOBJq.png">  
+    <title>Nick Digiovani</title>
+    <style>
+
+        a{
+            text-decoration: none;
+        }
+
+        .ligma{
+            border-radius: 50%;
+        }
+        
+        body {
+            
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        header {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            max-width: 600px;
+        }
+
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+        }
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+        .content {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: white;
+            padding: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: gray;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .sidebar::after{
+            position: absolute;
+            content: "";
+            inset: 0;
+            background-color: rgb(20, 17, 17);
+            scale: 1 0;
+            z-index: -1;
+            transition: 0.45s;
+            border-radius: 10px;
+        }
+
+        a:hover{
+            color: black;
+        }
+
+        a:hover::after{
+            scale: 1 1;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .channel-header {
+            background-color: #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .channel-info {
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+        }
+        .channel-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .subscribe-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .subscribe-button:hover{
+            background-color: gray;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            
+            
+        }
+
+        .video-grid a{
+            color: black;
+        }
+        .video-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 5px 15px black;
+        }
+        .video-thumbnail {
+            width: 100%;
+            height: 140px;
+            background-color: black;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-info {
+            padding: 10px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-stats {
+            color: #676565;
+            font-size: 14px;
+        }
+
+        .search-bar input{
+            align-items: center;
+            border-radius: 12px;
+        }
+
+        .im{
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="youtube.html"><img src="youtube.webp" alt="YouTube" width="150"></a></div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="user-icon"><img src="guy.png" alt="loginin"></div>
+        
+    </header>
+
+    <div class="content">
+        <div class="sidebar">
+            <a href="youtube.html">Home</a>
+            <a href="https://www.youtube.com/@NickDiGiovanni/shorts">Shorts</a>
+            <a href="https://www.youtube.com/@NickDiGiovanni/community">community</a>
+            <a href="https://www.youtube.com/@NickDiGiovanni/store">store</a>
+        </div>
+
+        <div class="main-content">
+            <div class="channel-header"><img src="teamwork.jpg" alt="cought Gordon" width="1300" height="200" class="im">
+                <div class="channel-info">
+                    <div><img src="nick.webp" alt="nick" width="100" class="ligma"></div>
+                    <div>
+                        <h1>Nick digiovani</h1>
+                        <p>@NickDiGiovanni • 20.6M subscribers • 886 videos</p>
+                        <p>Subscribe to catch Gordon! We are so close.</p>
+                        <a href="https://www.instagram.com/nick.digiovanni">instagram.com/nick.digiovanni</a><br><br>
+                        <button class="subscribe-button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-grid">
+                <a href="https://www.youtube.com/watch?v=aw0_klOuTDg">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="1.png" alt="1">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Ate The World's Rarest Foods</div>
+                        <div class="video-stats">3.9M views • 5 days ago</div>
+                    </div>
+                </div></a>
+
+                <a href="https://www.youtube.com/watch?v=8ewFBbyNtgk">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="2.png" alt="2">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Cooked YouTubers Their Favorite Foods</div>
+                        <div class="video-stats">6.1M views • 2 week ago</div>
+                    </div>
+                </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=BmicBpOXPlc">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="3.png" alt="3">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Tested 1-Star Restaurants</div>
+                        <div class="video-stats">4.8M views • 1 month ago</div>
+                    </div>
+                </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=XnQ7Py8D6v0 ">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="4.png" alt="4">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Cooked Every Food From SpongeBob</div>
+                        <div class="video-stats">4.9M views • 2 month ago</div>
+                    </div>
+                </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Oa_oEcz7up0">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="5.png" alt="5">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Tried Every Japanese Fast Food</div>
+                        <div class="video-stats">5.4M views • 1 month ago</div>
+                    </div>
+                </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=H0X4PZSFtak ">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="6.png" alt="6">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Cooking Challenge vs MrBeast</div>
+                        <div class="video-stats">13M views • 2 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=eUQZcXrciRA">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="7.png" alt="7">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">50 Ways To Use A Watermelon</div>
+                        <div class="video-stats">11M views • 3 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=ancIoAHp17A ">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="8.png" alt="8">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">My Entire MasterChef Journey (ft. Gordon Ramsay)</div>
+                        <div class="video-stats">11M views • 3 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=WmI6sF8Tz0I">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="9.png" alt="9">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">How Much Wagyu Can A Sumo Wrestler Eat?</div>
+                        <div class="video-stats">8.1M views • 4 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=nuNI7tr0YZE ">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="10.png" alt="10">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Ate The World's Best Burger</div>
+                        <div class="video-stats">8.6M views • 4 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=h0HjktaeEpA">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="11.png" alt="11">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">I Tested 1-Star Kitchen Gadgets (ft. Ryan Trahan)</div>
+                        <div class="video-stats">16M views • 5 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=cLKCDaNRHW0 ">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="12.png" alt="12">
+                    </div>
+                        <div class="video-info">
+                        <div class="video-title">How Wagyu Is Made (Farm To Table)</div>
+                        <div class="video-stats">8.5M views • 5 months ago</div>
+                </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=WEdh0SLhw1M">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="13.png" alt="13">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Carving A Whole Bluefin Tuna</div>
+                        <div class="video-stats">9.9M views • 6 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=UYi6_M9RinY">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="14.png" alt="14">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">How I Became A YouTuber</div>
+                        <div class="video-stats">917K views • 6 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=a77xo2ktcjw">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="15.png" alt="15">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Touring The Largest Japanese Fish Market</div>
+                        <div class="video-stats">4.3M views • 7 months ago</div>
+                    </div>
+                </div></a>
+                <a href="https://www.youtube.com/watch?v=qRRfksZxLyc">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="16.png" alt="16">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Tasting Food From Every Decade</div>
+                            <div class="video-stats">12M views • 7 months ago</div>
+                        </div>
+                    </div></a>
+                <a href="https://www.youtube.com/watch?v=dxjSO5TMoUs">
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <img src="17.png" alt="17">
+                            </div>
+                            <div class="video-info">
+                                <div class="video-title">Goodbye, Lynja</div>
+                                <div class="video-stats">14M views • 8 months ago</div>
+                            </div>
+                        </div></a>
+                <a href="https://www.youtube.com/watch?v=WSJAEyExpBY">
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <img src="18.png" alt="18">
+                            </div>
+                            <div class="video-info">
+                                <div class="video-title">Reacting To Viral Food TikToks</div>
+                                <div class="video-stats">2.8M views • 8 months ago</div>
+                            </div>
+                        </div>
+                </a>
+                <a href="">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="19.png" alt="19">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Master Cooking In Under 20 Minutes</div>
+                            <div class="video-stats">2.2M views • 8 months ago</div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=LL5pu9GzziA">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="20.png" alt="20">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Celebrities Rate My Food</div>
+                            <div class="video-stats">18M views • 9 months ago</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
