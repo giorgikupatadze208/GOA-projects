@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მინი თამაში</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .game-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .start-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .start-btn:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>საიტი თამაშისთვის</h1>
+        <p>დაეწყო ჩვენი მინი-თამაში</p>
+    </header>
+
+    <div class="game-container">
+        <div class="game-box">
+            <h2>დარჩი თამაში</h2>
+            <button class="start-btn" onclick="startGame()">თამაშის დაწყება</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>giorgi kupatadze</p>
+    </footer>
+
+    <script>
+        function startGame() {
+            alert('თამაში დაიწყო! წარმატებები!');
+        }
+    </script>
+</body>
+</html>

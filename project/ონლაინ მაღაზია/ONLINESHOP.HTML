@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კომპლექსური მაღაზიის კალათა</title>
+    <style>
+        /* CSS სტილები */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { color: #333; }
+        #product-list, #cart {
+            width: 90%;
+            max-width: 700px;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        .product, .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:disabled { background-color: #ccc; }
+        button:hover:not(:disabled) { background-color: #218838; }
+        .total { font-weight: bold; text-align: right; }
+    </style>
+</head>
+<body>
+
+    <h1>სრული მაღაზიის სისტემა</h1>
+    
+    <!-- პროდუქტის სია -->
+    <section id="product-list">
+        <h2>პროდუქტები</h2>
+        <div class="product">
+            <span>პროდუქტი 1 - $10</span>
+            <button onclick="shop.addToCart(new Product('პროდუქტი 1', 10))">დამატება</button>
+        </div>
+        <div class="product">
+            <span>პროდუქტი 2 - $15</span>
+            <button onclick="shop.addToCart(new Product('პროდუქტი 2', 15))">დამატება</button>
+        </div>
+        <div class="product">
+            <span>პროდუქტი 3 - $20</span>
+            <button onclick="shop.addToCart(new Product('პროდუქტი 3', 20))">დამატება</button>
+        </div>
+    </section>
+
+    <!-- კალათა -->
+    <section id="cart">
+        <h2>კალათა</h2>
+        <div id="cart-items">თქვენი კალათა ცარიელია.</div>
+        <p class="total" id="total-price">ჯამი: $0</p>
+        <button onclick="shop.checkout()" id="checkout-btn" disabled>ყიდვა</button>
+    </section>
+
+    <script>
+        // ობიექტზე ორიენტირებული JavaScript
+
+        // პროდუქტის კლასი
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+        }
+
+        // კალათის სისტემა
+        class Cart {
+            constructor() {
+                this.items = [];
+            }
+            addItem(product) {
+                this.items.push(product);
+                this.updateCartView();
+            }
+            getTotal() {
+                return this.items.reduce((total, product) => total + product.price, 0);
+            }
+            clear() {
+                this.items = [];
+                this.updateCartView();
+            }
+            updateCartView() {
+                const cartItems = document.getElementById('cart-items');
+                const totalPrice = document.getElementById('total-price');
+                const checkoutBtn = document.getElementById('checkout-btn');
+
+                if (this.items.length === 0) {
+                    cartItems.innerHTML = 'თქვენი კალათა ცარიელია.';
+                    totalPrice.innerHTML = 'ჯამი: $0';
+                    checkoutBtn.disabled = true;
+                } else {
+                    cartItems.innerHTML = this.items.map((product, index) => 
+                        `<div class="cart-item">${product.name} - $${product.price} 
+                        <button onclick="shop.removeFromCart(${index})">წაშლა</button></div>`
+                    ).join('');
+                    totalPrice.innerHTML = 'ჯამი: $' + this.getTotal();
+                    checkoutBtn.disabled = false;
+                }
+            }
+            removeItem(index) {
+                this.items.splice(index, 1);
+                this.updateCartView();
+            }
+        }
+
+        // მაღაზიის სისტემა
+        class Shop {
+            constructor() {
+                this.cart = new Cart();
+            }
+            addToCart(product) {
+                this.cart.addItem(product);
+            }
+            removeFromCart(index) {
+                this.cart.removeItem(index);
+            }
+            checkout() {
+                if (this.cart.items.length > 0) {
+                    alert('გმადლობთ, რომ იყიდეთ პროდუქცია!');
+                    this.cart.clear();
+                } else {
+                    alert('თქვენი კალათა ცარიელია!');
+                }
+            }
+        }
+
+        // მაღაზიის ობიექტი
+        const shop = new Shop();
+    </script>
+</body>
+</html>

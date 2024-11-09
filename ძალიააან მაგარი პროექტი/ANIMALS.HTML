@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ცხოველთა სამყარო</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #a64ca4, #007bff);
+            color: white;
+            animation: backgroundColor 10s ease infinite alternate;
+        }
+        @keyframes backgroundColor {
+            0% { background-color: #a64ca4; }
+            100% { background-color: #007bff; }
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        section {
+            padding: 20px;
+            margin: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .animal {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            margin: 15px 0;
+            padding: 15px;
+            transition: 0.3s;
+        }
+        .animal:hover {
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            backdrop-filter: blur(5px);
+        }
+        .quiz {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            animation: bounceIn 0.5s;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        .quiz h3 {
+            margin: 0 0 10px 0;
+        }
+        .quiz label {
+            display: block;
+            margin: 5px 0;
+        }
+        .quiz input[type="radio"] {
+            margin-right: 10px;
+        }
+        .quiz button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .quiz button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ცხოველთა სამყარო</h1>
+        <nav>
+            <a href="#cats">კატები</a>
+            <a href="#dogs">ძაღლები</a>
+            <a href="#birds">ჩიტები</a>
+            <a href="#reptiles">გველები</a>
+            <a href="#mammals">მამლები</a>
+            <a href="#fish">თევზები</a>
+            <a href="#amphibians">ამფიბიები</a>
+            <a href="#insects">მწერები</a>
+            <a href="#quiz">გამოკითხვა</a>
+        </nav>
+    </header>
+
+    <section id="cats">
+        <h2>კატები</h2>
+        <div class="animal">
+            <h3>ბუნებრივი კატა</h3>
+            <p>ბუნებრივი კატები (Felis catus) არიან ერთ-ერთი ყველაზე პოპულარული შინაური ცხოველები მსოფლიოში. მათ აქვთ ძლიერი ექსტრაქტები და შინაური ცხოვრების მოსაწყობად შესაფერისი უნარები.</p>
+            <img src="OIP.jpeg" alt="კატა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>პერსიული კატა</h3>
+            <p>პერსიული კატები ცნობილია თავბრუსხვევის გრძელი ბალახით და სიმშვიდით. ისინი შესანიშნავი შინაური ცხოველები არიან.</p>
+            <img src="th.jpeg" alt="პერსიული კატა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ბირმული კატა</h3>
+            <p>ბირმული კატები ცნობილია თავიანთი სითბოთი და მეგობრულობით. ისინი ძალიან მეგობრული და მოსიყვარულე არიან.</p>
+            <img src="ბირმული კატა.jpeg" alt="ბირმული კატა" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Cats -->
+        <div class="animal">
+            <h3>შოტლანდიური კატა</h3>
+            <p>შოტლანდიური კატები ცნობილია თავიანთი ყურების უნიკალური ფორმით. ისინი ძალიან სასიამოვნო და მეგობრულები არიან.</p>
+            <img src="შოტლანდიური კატა.jpeg" alt="შოტლანდიური კატა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ბრიტანული მოკლე ბეწვი</h3>
+            <p>ბრიტანული მოკლე ბეწვები მშვიდი და კომუნიკაბელური კატებია, რომლებიც პოპულარული შინაური ცხოველები არიან.</p>
+            <img src="ბრიტანული მოკლე ბეწვი.jpeg" alt="ბრიტანული მოკლე ბეწვი" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+    <section id="dogs">
+        <h2>ძაღლები</h2>
+        <div class="animal">
+            <h3>ლაბრადორი</h3>
+            <p>ლაბრადორები ცნობილია თავიანთი მეგობრული ბუნებით და დიდი ენერგიით. ისინი შესანიშნავი კომპანიონები არიან.</p>
+            <img src="https://example.com/labrador.jpg" alt="ლაბრადორი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ბულდოგი</h3>
+            <p>ბულდოგები ცნობილია თავიანთი მჭიდრო სხ body's ფორმით და მშვიდი ხასიათით.</p>
+            <img src="https://example.com/bulldog.jpg" alt="ბულდოგი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>პატარა ძაღლი</h3>
+            <p>პატარა ძაღლები არიან პატარა და დიდი გულწრფელობა. ისინი ხშირად არიან ნაზი და სათამაშო.</p>
+            <img src="https://example.com/puppy.jpg" alt="პატარა ძაღლი" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Dogs -->
+        <div class="animal">
+            <h3>გერმანული ნაგაზი</h3>
+            <p>გერმანული ნაგაზები ცნობილია თავიანთი ინტელექტით და წვრთნის უნარით. ისინი შესანიშნავი დაცვის ძაღლები არიან.</p>
+            <img src="https://example.com/german_shepherd.jpg" alt="გერმანული ნაგაზი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>სიმპათიური სასუქი</h3>
+            <p>სიმპათიური სასუქები არიან პატარა, მაგრამ ძლიერები, რომელიც ზრუნავენ მათ ოჯახზე.</p>
+            <img src="https://example.com/chihuahua.jpg" alt="სიმპათიური სასუქი" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+    <section id="birds">
+        <h2>ჩიტები</h2>
+        <div class="animal">
+            <h3>პარალელური</h3>
+            <p>პარალელური ცნობილია თავიანთი ფერადი feathers და მეტყველების უნარით.</p>
+            <img src="https://example.com/parrot.jpg" alt="პარალელური" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>კანარიკო</h3>
+            <p>კანარიკო ცნობილია თავიანთი ლამაზი სიმღერით. ისინი ხშირად შინაურ ჩიტებად გამოიყენება.</p>
+            <img src="https://example.com/canary.jpg" alt="კანარიკო" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>აფრიკელი გველობა</h3>
+            <p>აფრიკელი გველობა ცნობილი არიან თავიანთი უნიკალური ფერებით და ხასიათით.</p>
+            <img src="https://example.com/african_gray.jpg" alt="აფრიკელი გველობა" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Birds -->
+        <div class="animal">
+            <h3>შავი სამუდამო</h3>
+            <p>შავი სამუდამო ცნობილია მათი ინტელექტით და შესაძლებლობებით.</p>
+            <img src="https://example.com/crow.jpg" alt="შავი სამუდამო" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ტრადიციული მამასატე</h3>
+            <p>ტრადიციული მამასატე ცნობილია თავიანთი პატივით და მრავალფეროვნებით.</p>
+            <img src="https://example.com/sparrow.jpg" alt="ტრადიციული მამასატე" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+    <section id="reptiles">
+        <h2>გველები</h2>
+        <div class="animal">
+            <h3>სური გველი</h3>
+            <p>სური გველები ცნობილია თავიანთი ტკივილებით და გასაოცარი მანევრებით.</p>
+            <img src="https://example.com/snake.jpg" alt="სური გველი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ისლანდიური გველი</h3>
+            <p>ისლანდიური გველები ცნობილია თავიანთი სილამაზით და გამძლეობით.</p>
+            <img src="https://example.com/iguana.jpg" alt="ისლანდიური გველი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>პანტერა გველი</h3>
+            <p>პანტერა გველები ცნობილია თავიანთი მშვენიერი დიზაინით.</p>
+            <img src="https://example.com/panther.jpg" alt="პანტერა გველი" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Reptiles -->
+        <div class="animal">
+            <h3>ვედრო</h3>
+            <p>ვედრო ცნობილია თავისი ბუნებით.</p>
+            <img src="https://example.com/turtle.jpg" alt="ვედრო" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ბურხის გველი</h3>
+            <p>ბურხის გველები ცნობილია თავიანთი ჯანმრთელობით.</p>
+            <img src="https://example.com/burrowing.jpg" alt="ბურჭის გველი" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+    <section id="mammals">
+        <h2>მამლები</h2>
+        <div class="animal">
+            <h3>პანდა</h3>
+            <p>პანდები ცნობილია თავიანთი პატარაობის და განსაკუთრებული გარეგნობით.</p>
+            <img src="https://example.com/panda.jpg" alt="პანდა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ლომი</h3>
+            <p>ლომები ცნობილია თავიანთი ძალით და სამეფო ბუნებით.</p>
+            <img src="https://example.com/lion.jpg" alt="ლომი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ციყვი</h3>
+            <p>ციყვები ცნობილია თავიანთი აქტიურობით.</p>
+            <img src="https://example.com/squirrel.jpg" alt="ციყვი" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Mammals -->
+        <div class="animal">
+            <h3>ბედობის ცხოველები</h3>
+            <p>ბედობის ცხოველები ცნობილია თავიანთი ლამაზობით.</p>
+            <img src="https://example.com/koala.jpg" alt="ბედობის ცხოველები" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>სავსე</h3>
+            <p>სავსე ცნობილია თავიანთი ძალით.</p>
+            <img src="https://example.com/hippo.jpg" alt="სავსე" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+    <section id="fish">
+        <h2>თევზები</h2>
+        <div class="animal">
+            <h3>კლონების თევზი</h3>
+            <p>კლონების თევზები ცნობილია თავიანთი უნიკალური შესახედაობით.</p>
+            <img src="https://example.com/clownfish.jpg" alt="კლონების თევზი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>მსუბუქი თევზი</h3>
+            <p>მსუბუქი თევზები ცნობილია თავიანთი მშვიდობით.</p>
+            <img src="https://example.com/goldfish.jpg" alt="მსუბუქი თევზი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>მსუბუქი მელი</h3>
+            <p>მსუბუქი მელი ცნობილია თავიანთი ლამაზობით.</p>
+            <img src="https://example.com/salmon.jpg" alt="მსუბუქი მელი" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Fish -->
+        <div class="animal">
+            <h3>რბილი მელა</h3>
+            <p>რბილი მელა ცნობილია თავიანთი სიმშვიდით.</p>
+            <img src="https://example.com/tuna.jpg" alt="რბილი მელა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ნათელი თევზი</h3>
+            <p>ნათელი თევზი ცნობილია თავიანთი ძალით.</p>
+            <img src="https://example.com/brightfish.jpg" alt="ნათელი თევზი" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+    <section id="amphibians">
+        <h2>ამფიბიები</h2>
+        <div class="animal">
+            <h3>მწვანე ბაყაყი</h3>
+            <p>მწვანე ბაყაყები ცნობილია თავიანთი ძალით და ცხოველებით.</p>
+            <img src="https://example.com/frog.jpg" alt="მწვანე ბაყაყი" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ასეთ პეპელა</h3>
+            <p>ასეთი პეპელა ცნობილია მათი მიმზიდველობით.</p>
+            <img src="https://example.com/newt.jpg" alt="ასეთ პეპელა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>პეპლების ბაყაყი</h3>
+            <p>პეპლების ბაყაყები ცნობილია თავიანთი სილამაზით.</p>
+            <img src="https://example.com/toad.jpg" alt="პეპლების ბაყაყი" style="width:100%; max-width:400px;">
+        </div>
+        <!-- More Amphibians -->
+        <div class="animal">
+            <h3>ბაყაყების კატა</h3>
+            <p>ბაყაყების კატები ცნობილია თავიანთი აქტიურობით.</p>
+            <img src="https://example.com/catfish.jpg" alt="ბაყაყების კატა" style="width:100%; max-width:400px;">
+        </div>
+        <div class="animal">
+            <h3>ლამაზ ბაყაყი</h3>
+            <p>ლამაზ ბაყაყები ცნობილია თავიანთი გარეგნობით.</p>
+            <img src="https://example.com/beautifulfrog.jpg" alt="ლამაზ ბაყაყი" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>კუპატაძე გიორგი</p>
+</footer>
+
+</body>
+</html>
