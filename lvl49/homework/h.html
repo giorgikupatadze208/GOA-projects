@@ -3,80 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>მინი თამაში</title>
+    <title>3D მანქანის თამაში</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-        }
-        .game-box {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        .start-btn {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .start-btn:hover {
-            background-color: #45a049;
-        }
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>საიტი თამაშისთვის</h1>
-        <p>დაეწყო ჩვენი მინი-თამაში</p>
-    </header>
 
-    <div class="game-container">
-        <div class="game-box">
-            <h2>დარჩი თამაში</h2>
-            <button class="start-btn" onclick="startGame()">თამაშის დაწყება</button>
-        </div>
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cannon-es/0.18.1/cannon-es.min.js"></script>
 
-    <footer>
-        <p>giorgi kupatadze</p>
-    </footer>
+<script>
+    // Scene, Camera, Renderer setup
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    let renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-    <script>
-        function startGame() {
-            alert('თამაში დაიწყო! წარმატებები!');
+    // Physics World setup using Cannon.js
+    let world = new CANNON.World();
+    world.gravity.set(0, -9.82, 0); // gravity
+
+    // Create ground (flat plane)
+    let groundMaterial = new CANNON.Material();
+    let groundShape = new CANNON.Plane();
+    let groundBody = new CANNON.Body({
+        mass: 0, // Static object
+        position: new CANNON.Vec3(0, -1, 0)
+    });
+    groundBody.addShape(groundShape);
+    world.addBody(groundBody);
+
+    // 3D Car Setup
+    let car = createCar();
+    scene.add(car);
+
+    // Light and camera
+    let light = new THREE.AmbientLight(0xFFFFFF);
+    scene.add(light);
+    camera.position.z = 5;
+
+    // Create a car using a 3D Box
+    function createCar() {
+        let carMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        let carGeometry = new THREE.BoxGeometry(1, 0.5, 2);
+        let carMesh = new THREE.Mesh(carGeometry, carMaterial);
+
+        // Cannon.js Body for the car
+        let carShape = new CANNON.Box(new CANNON.Vec3(0.5, 0.25, 1));
+        let carBody = new CANNON.Body({
+            mass: 1, // Car has mass
+            position: new CANNON.Vec3(0, 1, 0) // Position above the ground
+        });
+        carBody.addShape(carShape);
+        world.addBody(carBody);
+
+        // Syncing 3D car mesh with physics car body
+        car.update = function() {
+            carMesh.position.copy(carBody.position);
+            carMesh.rotation.copy(carBody.rotation);
         }
-    </script>
+
+        return carMesh;
+    }
+
+    // Handling User Input for Car Movement
+    let forward = false;
+    let backward = false;
+    let left = false;
+    let right = false;
+
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowUp") forward = true;
+        if (event.key === "ArrowDown") backward = true;
+        if (event.key === "ArrowLeft") left = true;
+        if (event.key === "ArrowRight") right = true;
+    });
+
+    window.addEventListener("keyup", (event) => {
+        if (event.key === "ArrowUp") forward = false;
+        if (event.key === "ArrowDown") backward = false;
+        if (event.key === "ArrowLeft") left = false;
+        if (event.key === "ArrowRight") right = false;
+    });
+
+    // Update Car Movement in Physics World
+    function updateCarMovement() {
+        let carSpeed = 5;
+        let turnSpeed = 0.1;
+
+        // Move forward
+        if (forward) carBody.velocity.z = -carSpeed;
+        // Move backward
+        if (backward) carBody.velocity.z = carSpeed;
+        // Rotate left
+        if (left) carBody.angularVelocity.y = turnSpeed;
+        // Rotate right
+        if (right) carBody.angularVelocity.y = -turnSpeed;
+    }
+
+    // Render loop
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // Update car physics
+        updateCarMovement();
+
+        // Update car mesh to match physics
+        car.update();
+
+        // Step the physics world
+        world.step(1/60);
+
+        // Render the scene
+        renderer.render(scene, camera);
+    }
+    animate();
+</script>
 </body>
 </html>
