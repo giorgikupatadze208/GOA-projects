@@ -1,8 +1,13 @@
 
-const myParagraph = document.getElementById('myParagraph');
-const colorButton = document.getElementById('colorButton');
+const form = document.getElementById('myForm');
 
-colorButton.addEventListener('click', function() {
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); 
 
-  myParagraph.style.color = 'red';
+  const nameValue = document.getElementById('name').value;
+  const emailValue = document.getElementById('email').value;
+  const passwordValue = document.getElementById('password').value;
+  console.log('Name:', nameValue);
+  console.log('Email:', emailValue);
+  console.log('Password:', passwordValue);
 });

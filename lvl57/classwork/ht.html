@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რეგისტრაცია</title>
+    <script>
+        function validateForm() {
+            
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var agree = document.getElementById('agree').checked;
+
+           
+            if (!agree) {
+                alert('daetanxmet wesebs');
+                return false;
+            }
+
+            if (!name || !email || !password || !gender) {
+                alert('gtxovt sheavset yvelaferi');
+                return false;
+            }
+
+            
+            console.log("სახელი: " + name);
+            console.log("ემაილი: " + email);
+            console.log("პაროლი: " + password);
+            console.log("გენდერი: " + gender.value);
+
+         
+            alert('kargad chaiara registraciam');
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h2>რეგისტრაცია</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">სახელი:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">ემაილი:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">პაროლი:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="gender">გენდერი:</label><br>
+        <input type="radio" id="male" name="gender" value="მამაკაცი">
+        <label for="male">მამაკაცი</label><br>
+        <input type="radio" id="female" name="gender" value="ქალი">
+        <label for="female">ქალი</label><br><br>
+
+        <label for="agree">
+            <input type="checkbox" id="agree"> vetanxmebi saitis wesebs
+        </label><br><br>
+
+        <button type="submit">რეგისტრაცია</button>
+    </form>
+</body>
+</html>
