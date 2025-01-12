@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kukusha123</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf6f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contact-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .contact-form h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .contact-form input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .contact-form button {
+            background-color: #008060;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #005940;
+        }
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form class="contact-form">
+        <h1>Contact Us</h1>
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" required>
+
+        <label for="last-name">Last Name </label>
+        <input type="text" id="last-name" name="last-name" required>
+
+        <label for="email">Email Address </label>
+        <input type="email" id="email" name="email" required>
+
+        <label>Query Type </label>
+        <div class="radio-group">
+            <input type="radio" id="general-enquiry" name="query-type" value="general" required>
+            <label for="general-enquiry">General Enquiry</label>
+
+            <input type="radio" id="support-request" name="query-type" value="support">
+            <label for="support-request">Support Request</label>
+        </div>
+
+        <label for="message">Message </label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">I consent to being contacted by the team </label>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
