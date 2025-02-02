@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zdarova</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .slider {
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 400%; /* 100% * number of images */
+    }
+    .slides img {
+      width: 100%;
+      display: block;
+    }
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .control-btn {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .control-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slides">
+    <img src="d.jpeg" alt="Image 1">
+    <img src="A.jpeg" alt="Image 2">
+    <img src="download.jpeg" alt="Image 3">
+    <img src="images.jpeg" alt="Image 4">
+  </div>
+  <div class="controls">
+    <button class="control-btn" id="prev">&#10094;</button>
+    <button class="control-btn" id="next">&#10095;</button>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelector('.slides');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  let currentIndex = 0;
+
+  function updateSlidePosition() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % 4; 
+    updateSlidePosition();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + 4) % 4; 
+    updateSlidePosition();
+  });
+</script>
+
+</body>
+</html>
