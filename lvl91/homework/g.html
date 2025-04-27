@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wigni</title>
+</head>
+<body>
+    <h1>Search for a Book</h1>
+    <form id="bookForm">
+        <label for="searchTerm">Enter book name:</label>
+        <input type="text" id="searchTerm" required>
+        <button type="submit">Search</button>
+    </form>
+    
+    <div id="bookResults"></div>
+
+    <script>
+        document.getElementById("bookForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            var searchTerm = document.getElementById("searchTerm").value;
+            var url = "https://www.googleapis.com/books/v1/volumes?q={searchTerm}" + searchTerm;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var results = document.getElementById("bookResults");
+                    results.innerHTML = "";
+
+                    if (data.items) {
+                        data.items.forEach(item => {
+                            var book = item.volumeInfo;
+                            results.innerHTML += `
+                                <h3>${book.title}</h3>
+                                <p><strong>Author:</strong> ${book.authors ? book.authors.join(", ") : "Unknown"}</p>
+                                <p><strong>Published:</strong> ${book.publishedDate || "Unknown"}</p>
+                                <p><strong>Pages:</strong> ${book.pageCount || "Unknown"}</p>
+                                <p><strong>Description:</strong> ${book.description || "No description available"}</p>
+                                <img src="${book.imageLinks ? book.imageLinks.thumbnail : 'https://www.googleapis.com/books/v1/volumes?q={searchTerm}'}" alt="${book.title}">
+                            `;
+                        });
+                    } else {
+                        results.innerHTML = "No books found.";
+                    }
+                })
+                .catch(error => console.log("Error:", error));
+        });
+    </script>
+</body>
+</html>
+
+<!--თუ დავსერჩავს მაგალითად Sarah Graham ან harry potter ან სხვა წიგნს და მას ჩავწერთ ამოაგდებს მასზე
+ინფორმაციას-->
