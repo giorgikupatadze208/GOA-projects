@@ -12,7 +12,7 @@ body{
 }
 
 
-/* navbar */
+
 
 
 .navbar{
@@ -51,7 +51,7 @@ p{
 }
 
 
-/*     home */
+
 
 
 #homediv{
@@ -71,7 +71,6 @@ p{
 }
 
 
-/*   about us */
 
 
 #aboutusdiv{
@@ -91,7 +90,6 @@ p{
 }
 
 
-/* GOA land and Hackathon */
 
 
 #GOAlanddiv{
@@ -109,7 +107,7 @@ p{
 }
 
 
-/*   main */
+
 
 
 main{
@@ -119,7 +117,7 @@ main{
 }
 
 
-/* footer */
+
 
 footer{
     background-color: #111;
